@@ -154,7 +154,7 @@ states = [
 # *Make sure the states don't appear in alphabetical order in the prompts. This will make the game a bit more challenging for the user.
 import random
 random_states = random.sample(states, len(states))
-
+# print(random_states)
 
 # *Provide a welcome message to introduce the player to the game.
 print ("Welcome to the State Capital game! Are you smarter than a 3rd grader? We will give you a state, you will have to guess the capital. Remember spelling and capitalization matter!")
@@ -162,8 +162,18 @@ print ("Welcome to the State Capital game! Are you smarter than a 3rd grader? We
 game_score = {}
 game_score['right'] = 0
 game_score['wrong'] = 0
-print(game_score)
+# print(game_score)
 # *Through all 50 states, prompt the user to name the capital of the state.
+for item in random_states:
+    q = input(f"What is the capital of " + item["name"] + "?" )
+    if q == item["capital"]:
+        game_score["right"] += 1
+        print(f"Good job you're score is now {game_score}")
+    else: 
+        game_score["wrong"] += 1 
+        print(f"Better luck next time! You're score is {game_score}")
+
+
 
 # *If the answer is correct, display a message saying so, and increment the correct key.
 
