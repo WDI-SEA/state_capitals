@@ -1,3 +1,5 @@
+import random
+
 states = [
 {
     "name": "Alabama",
@@ -150,3 +152,34 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+restart = True
+ 
+while restart:
+    random.shuffle(states)
+    wrong = 0
+    correct = 0
+    print("==============G'Day!===============")
+
+    question = input("Would you like to play a game? [y/n]")
+    if question == "n":
+        restart = False
+        print("Oh...Okay...no worries. Come back when you're ready.")
+
+    if question == "y":
+        print("OKAY, Let's start the game. This game is all about guessing the capital of the state. Good luck! Bonne chance")
+        for state in (states[:6]):
+            question = input("What is the capital of " + state["name"]+ "? ")
+            if question != state["capital"]:
+                wrong = wrong + 1 
+                print("Oh no! You're wrong!")
+            if question == state["capital"]:
+                correct = correct + 1
+                print("You got it right! Score!")
+        print("GAME OVER you have ", correct,  "correct and ",(wrong), "wrong" )
+        question = input("Do you want to play again? [y/n]")
+        if question == "y":
+            restart = True
+        if question == "n":
+            print("OKAY CIAO!!!")
+            restart = False
