@@ -152,29 +152,23 @@ states = [
         "capital": "Cheyenne"
     }]
 
-# *Make sure the states don't appear in alphabetical order in the prompts. This will make the game a bit more challenging for the user.
 
 
-test_states = [
-    {
-        "name": "Arkansas",
-        "capital": "Little Rock"
-    }, {
-        "name": "California",
-        "capital": "Sacramento"
-    }, {
-        "name": "Colorado",
-        "capital": "Denver"
-    }]
 
-# print(random_states)
+# test_states = [
+#     {
+#         "name": "Arkansas",
+#         "capital": "Little Rock"
+#     }, {
+#         "name": "California",
+#         "capital": "Sacramento"
+#     }, {
+#         "name": "Colorado",
+#         "capital": "Denver"
+#     }]
 
-# *Provide a welcome message to introduce the player to the game.
 
-# *Initialize new keys in the dictionaries that store the number of times a user gets a capital correct and the number of times the answer is wrong.
 
-# print(game_score)
-# *Through all 50 states, prompt the user to name the capital of the state.
 
 
 
@@ -182,12 +176,16 @@ test_states = [
 
 def game():
     n = 1
-    random_states = random.sample(test_states, len(test_states))
+    # *Make sure the states don't appear in alphabetical order in the prompts. This will make the game a bit more challenging for the user.
+    random_states = random.sample(states, len(states))
+   # *Initialize new keys in the dictionaries that store the number of times a user gets a capital correct and the number of times the answer is wrong.
     game_score = {}
     game_score['right'] = 0
     game_score['wrong'] = 0
     while  n < len(random_states):
+        # *Provide a welcome message to introduce the player to the game.
         print(" Welcome to the State Capital game! Are you smarter than a 3rd grader?\n We will give you a state, you will have to guess the capital.\n Remember spelling and capitalization matter!")
+        # *Through all 50 states, prompt the user to name the capital of the state.
         for item in random_states:
             q = input(f" Q.{n} What is the capital of " + item["name"] + "?")
         # *If the answer is correct, display a message saying so, and increment the correct key.
@@ -195,17 +193,17 @@ def game():
                 n += 1
                 game_score["right"] += 1
                 print(
-                    f" Good job 😍!\n You have {game_score['right']} correct and  {game_score['wrong']} wrong")
+                    f" Good job 😍!\n You have {game_score['right']} correct and {game_score['wrong']} wrong")
         # *If the answer is wrong, display a message saying so, and increment the wrong key.
             else:
                 n += 1
                 game_score["wrong"] += 1
                 print(
-                    f" Better luck next time 😭!\n You have {game_score['right']} correct and  {game_score['wrong']} wrong")
+                    f" Better luck next time 😭!\n You have {game_score['right']} correct and {game_score['wrong']} wrong")
     # *Once the user has gone through all 50 states, ask them if they'd like to play again.
-    play_again = input(f" You reached the end with a score of {game_score['right']} correct and {game_score['wrong']} wrong. Do you want to play again? yes or no ")
+    play_again = input(f" You reached the end!\n Your score is {game_score['right']} correct and {game_score['wrong']} wrong. Do you want to play again? yes or no ")
     if play_again == 'yes':
-        random_states = random.sample(test_states, len(test_states))
+        random_states = random.sample(states, len(states))
         n = 1
         game_score['right'] = 0
         game_score['wrong'] = 0
