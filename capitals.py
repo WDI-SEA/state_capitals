@@ -152,6 +152,9 @@ states = [
 }]
 
 # *Make sure the states don't appear in alphabetical order in the prompts. This will make the game a bit more challenging for the user.
+import random
+random_states = random.sample(states, len(states))
+
 
 # *Provide a welcome message to introduce the player to the game.
 print ("Welcome to the State Capital game! Are you smarter than a 3rd grader? We will give you a state, you will have to guess the capital. Remember spelling and capitalization matter!")
