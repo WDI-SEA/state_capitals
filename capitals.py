@@ -150,3 +150,49 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+# ////////////////////////////////////////////////////////
+
+
+import random
+
+def play_game():
+    correct = {}
+    wrong = {}
+   # loop through states and their capitals
+for state in states:
+    # extract state name and capital
+    name = state['name']
+    capital = state['capital']
+    
+    # Shuffle the letters of the capital
+    shuffled_capital = ''.join(random.sample(capital, len(capital)))
+    
+    # Ask the user to guess the capital
+    answer = input(f"What is the capital of {name}? ({shuffled_capital}) ")
+    
+    # Check if the answer is correct or wrong and update the corresponding dictionary
+    if answer.lower() == capital.lower():
+        print("Correct!")
+        correct[name] = correct.get(name, 0) + 1
+    else:
+        print(f"Incorrect. The capital of {name} is {capital}.")
+        wrong[name] = wrong.get(name, 0) + 1
+        
+    # Compute and print the number of correct and wrong answers for the current state
+    num_correct = correct.get(name, 0)
+    num_wrong = wrong.get(name, 0)
+    total = num_correct + num_wrong
+    print(f"{name} has been answered correctly {num_correct} out of {total} times.")
+    
+# Game is over, ask the user if they want to play again
+print("Game over!")
+play_again = input("Would you like to play again? (y/n) ")
+
+# If user wants to play again, call the play_game function again
+if play_again.lower() == 'y':
+    play_game()
+
+
+print("Welcome to the state capital game!")
+play_game()
